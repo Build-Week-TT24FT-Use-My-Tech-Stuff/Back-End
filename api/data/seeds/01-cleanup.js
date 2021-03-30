@@ -14,6 +14,28 @@ exports.seed = async function(knex) {
       user_email: 'admin@gmail.com',
       user_role: true
     }
-  
+ )
+ await knex('items').insert([
+  {
+    item_name:'TV',
+    item_price: 150.41,
+    item_description:'4k HD OLED HIGH-DEF SUPER ULTRA TV'
+  },
+  {
+    item_name:'Remote',
+    item_price: 150.41,
+    item_description:"Why does this cost the same as a TV? Climate change."
+  },
+  {
+    item_name:'Camera',
+    item_price: 1200.99,
+    item_description:"Why would you buy a camera when you have a smartphone?"
+  },
+  {
+    item_name:'Smartphone',
+    item_price: 2200.99,
+    item_description:"Why would you buy a smartphone when you have a camera?"
+  }
+ ]
  )
 }

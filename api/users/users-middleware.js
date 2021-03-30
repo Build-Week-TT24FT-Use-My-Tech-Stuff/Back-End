@@ -55,10 +55,26 @@ const buildToken = (user) => {
       }
       return jwt.sign(payload, JWT_SECRET, config)
 }
-
+const restricted = (req, res, next) => {
+    const token = req.headers.authorization
+    if(!token)
+      res.status(401).json({message:'You are not authorized to do this action'})
+    else{
+      jwt.verify(token, JWT_SECRET, (err, decoded) => {
+        if(err)
+          res.status(401).json({message:'Authorization is invalid'})
+        else
+        {
+          req.decodedJwt = decoded
+          next()
+        }
+      })
+    }
+}
 module.exports = {
     validateCredentials,
     validateUsername,
     buildToken,
-    checkUserExists
+    checkUserExists,
+    restricted
 }
