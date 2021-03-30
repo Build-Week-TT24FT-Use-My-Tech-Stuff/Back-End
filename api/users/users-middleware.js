@@ -2,6 +2,7 @@
 const User = require('./users-model')
 const {JWT_SECRET} = require('../secrets')
 const jwt = require('jsonwebtoken')
+
 const validateUsername = (req,res,next) => {
     User.getUserByUsername(req.body.username)
     .then((user) => {

@@ -25,7 +25,7 @@ router.post('/login', userMiddleware.checkUserExists, (req,res,next) => {
     .then((user) => {
         if(bcryptjs.compareSync(password, user.user_password))
         {const token = userMiddleware.buildToken(user)
-        res.json({message:`Welcome back, ${username}`, token})
+        res.json({user_role:user.user_role, token})
         }
         else
         {
