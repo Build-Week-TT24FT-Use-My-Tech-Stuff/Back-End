@@ -6,6 +6,7 @@ exports.up = function(knex) {
     tbl.string('item_name', 200).notNullable()
     tbl.text('item_description')
     tbl.float('item_price').notNullable()
+    tbl.string('rent_duration', 180)
   })
 };
 
